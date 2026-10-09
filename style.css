@@ -1,0 +1,872 @@
+:root {
+  --slide-color: #753b3e;
+  --primary-color: #3a0f13;
+  --primary-dark: #3a0f13;
+  --bg-color: #fdfcf7;
+  --text-color: #753b3e;
+  --text-muted: #753b3e;
+  --border-color: #d4cfbe;
+  --white: #ffffff;
+  --overlay-bg: rgba(0, 0, 0, 0.46);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+.welcome-overlay {
+  direction: rtl;
+  font-family: "Aref Ruqaa", serif;
+}
+
+/* حاوية الزهرة الرئيسية مع حركة الدوران المستمرة */
+.flower-container {
+  position: relative;
+  top: 53%;
+  /* width: 320px;
+            height: 320px; */
+  animation: rotateClockwise 20s linear infinite;
+}
+
+@keyframes rotateClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* تصميم البتلات الخلفية والامامية */
+.petal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* width: 140px;
+  height: 180px; */
+      width: 160px;
+    height: 220px;
+  background: linear-gradient(135deg, #7a0016 0%, #b3002d 50%, #4a000d 100%);
+  border-radius: 50% 50% 40% 40%;
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, 0.6),
+    0 10px 20px rgba(0, 0, 0, 0.4);
+  transform-origin: center bottom;
+  clip-path: polygon(
+    10% 0%,
+    90% 0%,
+    100% 30%,
+    95% 70%,
+    80% 100%,
+    20% 100%,
+    5% 70%,
+    0% 30%
+  );
+}
+
+/* توزيع البتلات في الدائرة بشكل متناسق */
+.p1 {
+  transform: translate(-50%, -100%) rotate(0deg);
+  z-index: 1;
+}
+.p2 {
+  transform: translate(-50%, -100%) rotate(45deg);
+  z-index: 2;
+}
+.p3 {
+  transform: translate(-50%, -100%) rotate(90deg);
+  z-index: 3;
+}
+.p4 {
+  transform: translate(-50%, -100%) rotate(135deg);
+  z-index: 4;
+}
+.p5 {
+  transform: translate(-50%, -100%) rotate(180deg);
+  z-index: 5;
+}
+.p6 {
+  transform: translate(-50%, -100%) rotate(225deg);
+  z-index: 6;
+}
+.p7 {
+  transform: translate(-50%, -100%) rotate(270deg);
+  z-index: 7;
+}
+.p8 {
+  transform: translate(-50%, -100%) rotate(315deg);
+  z-index: 8;
+}
+
+/* مركز الزهرة المنتصف تماماً ومطابق للصورة */
+.flower-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, #5e0011 0%, #3d000a 70%, #200004 100%);
+  border-radius: 50%;
+  z-index: 20;
+  box-shadow:
+    inset 0 0 15px rgba(0, 0, 0, 0.9),
+    0 5px 15px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgba(122, 0, 22, 0.3);
+}
+
+/* نقش داخلي لمركز الزهرة لمحاكاة تفاصيل الصورة */
+.core-texture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.core-texture::after {
+  content: "";
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #4a000d 0%, #2b0006 100%);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.wedding {
+  color: var(--slide-color);
+  background: url("https://i.pinimg.com/736x/82/31/66/82316614373bf435be60810396cfbe22.jpg")
+    no-repeat center center fixed;
+    /* background: url("./download\ \(2\).png")
+    no-repeat center center fixed; */
+  background-size: cover;
+  font-family: "Aref Ruqaa", serif;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.slide-1 {
+  background-image: url("./c46eb25fa36d241414c32a43f1f76e97-removebg-preview.png");
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.slide-1 .video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-1 .video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-bg);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  flex-direction: column;
+}
+
+.familyName {
+  font-size: 36px;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.timeWedding {
+  font-size: 16px;
+  display: flex;
+  gap: 30px;
+}
+
+.icon {
+  padding: 6px;
+  font-size: 20px;
+}
+
+/* الحاويات العامة */
+.contain {
+  text-align: center;
+  margin: 40px 20px;
+  background: rgba(255, 255, 255, 0);
+  padding: 30px 20px;
+  font-size: 18px;
+  border-radius: 25px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.slide-2 .contain{
+    backdrop-filter: blur(0px);
+}
+
+.contain div {
+  margin-bottom: 12px;
+}
+
+.slide-2 {
+  background-image: url("./download\ \(5\).png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 410px) {
+  .slide-2 {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+iframe {
+  border-radius: 20px;
+  max-width: 100%;
+}
+
+/* بطاقة التقويم */
+.calendar-card {
+  background: var(--bg-color);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  position: relative;
+  margin: 30px auto;
+  max-width: 320px;
+}
+
+.calendar-header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 25px 20px 15px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.binder-rings {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 114px;
+}
+
+.binder-rings span {
+  width: 15px;
+  height: 20px;
+  background: var(--primary-dark);
+  border-radius: 4px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-header .day-name,
+.calendar-header .year {
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.calendar-header .month-name {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.calendar-body {
+  padding: 25px 20px;
+  color: var(--text-color);
+}
+
+.day-number {
+  font-size: 75px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--border-color);
+  margin: 0 auto 15px;
+}
+
+.sub-date {
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.time {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* العد التنازلي */
+.countdown-container {
+  text-align: center;
+      background: #3a0f13;
+    color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 350px;
+  margin: 20px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-container h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #771e224f;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 60px;
+}
+
+.time-box span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.time-box .label {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.timeline-container {
+  padding: 30px 40px 30px 20px; /* ترك مساحة على اليمين لشريط الدانتيل */
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 520px;
+  position: relative;
+  overflow: hidden; /* لقص الدانتيل داخل حدود البطاقة بدقة */
+}
+
+.timeline-title {
+  color: var(--text-color, #333);
+  margin-bottom: 25px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+      padding: 10px 36px 10px 0;
+}
+
+/* شريط الدانتيل ملتصق تماماً بالطرف الأيمن للبطاقة */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  bottom: -45px;
+  right: -40px; /* يلتصق بحافة الحاوية تماماً */
+  width: 70px; /* عرض شريط الدانتيل */
+  background: url('./download\ \(7\).png') repeat-y center;
+  background-size: contain;
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 18px;
+  width: 100%;
+  z-index: 2; /* لضمان ظهور الكروت فوق الخلفية */
+}
+
+/* تصميم الكرت الأبيض لكل فقرة */
+.timeline-card {
+  background: #3a0f13;
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+/* ووقت الفعالية بتصميم أنيق */
+.timeline-item .time {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  background: rgba(197, 168, 128, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* وصف الحدث */
+.timeline-item .event-desc {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* قسم الرسائل والتهاني */
+.wishes-container {
+  padding: 25px 20px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.wishes-title {
+  color: var(--text-color);
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.wishes-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.wishes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-color);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(74, 66, 44, 0.2);
+  background: var(--white);
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* التهاني المعروضة */
+.wishes-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.wish-card {
+  background: var(--white);
+  border: 1px solid #e8e4d8;
+  border-radius: 12px;
+  padding: 12px 15px;
+  text-align: right;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.wish-author {
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.wish-text {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.slide-7 {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+/* صفحة الترحيب الأوليّة */
+.welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+.welcome-circle {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(253, 252, 247, 0.95);
+  border: 2px solid var(--primary-color);
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.2),
+    inset 0 0 15px rgba(74, 66, 44, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  padding: 20px;
+  animation: pulseCircle 2s infinite ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.welcome-circle:hover {
+  transform: scale(1.05);
+}
+
+.welcome-text h2 {
+  color: var(--text-color);
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.welcome-text span {
+  color: var(--text-muted);
+  font-size: 20px;
+  display: block;
+  margin: 4px 0;
+}
+
+.click-hint {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #8c826b;
+  letter-spacing: 0.5px;
+}
+
+@keyframes pulseCircle {
+  0% {
+    box-shadow: 0 0 0 0 rgba(253, 252, 247, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(253, 252, 247, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(253, 252, 247, 0);
+  }
+}
+
+.welcome-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+/* زر الموسيقى والموجات الصوتية */
+.music-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 15px;
+  z-index: 1000;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(253, 252, 247, 0.9);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  transition:
+    transform 0.2s ease,
+    background 0.3s ease;
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.1);
+  background: var(--white);
+}
+
+/* تأثير الظهور التدريجي (Scroll Reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* حاوية القلوب المتساقطة */
+#hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+.falling-heart {
+  position: absolute;
+  top: -10px;
+  color: rgba(255, 182, 193, 0.8);
+  font-size: 20px;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* أزرار الإضافات الجديدة (التقويم وتأكيد الحضور) */
+.extra-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.action-btn {
+  background: var(--bg-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  align-items: center;
+  font-family: inherit;
+}
+.action-btn:hover {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+/* أيقونة الموجات الصوتية المتحركة */
+.equalizer {
+  display: inline-flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 12px;
+  margin-left: 5px;
+}
+.equalizer span {
+  width: 2.5px;
+  background: var(--primary-color);
+  animation: bounce 0.6s infinite alternate;
+  border-radius: 1px;
+}
+.equalizer span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.equalizer span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes bounce {
+  0% {
+    height: 3px;
+  }
+  100% {
+    height: 12px;
+  }
+}
+.paused-eq span {
+  animation-play-state: paused;
+  height: 3px !important;
+}
+
+.calendar-widget {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #1a1a1a;
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  .calendar-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .calendar-month {
+    font-size: 28px;
+    font-weight: normal;
+    font-style: italic;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .calendar-year {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #444;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 أعمدة لأيام الأسبوع */
+    gap: 12px 6px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .day-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+
+  .calendar-day {
+    font-size: 15px;
+    color: #222;
+    position: relative;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .empty {
+    visibility: hidden;
+  }
+
+  .special-heart {
+    position: relative;
+    font-weight: 500;
+  }
+
+  .heart-svg {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    pointer-events: none;
+    color: #222;
+  }
+
+
+  .imgCorner{
+        position: absolute;
+    bottom: -31px;
+    left: -20px;
+  }
+
+  #totalAttendeesCount {
+    padding: 10px 20px;
+    font-size: 18px;
+    background: #3a0f13;
+    border-radius: 8px;
+    margin: 5px;
+    color: #ffffff;
+  }
+
+  .attendance-counter{
+    display: flex;
+    flex-direction: column;
+  }
